@@ -6,7 +6,6 @@ on:
 jobs:
   check:
     name: check
-    needs: rust-projects
     runs-on: ubuntu-latest
     strategy:
       matrix:
