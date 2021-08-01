@@ -1,5 +1,7 @@
 # rust101
 
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/1995parham/rust101/ci?label=ci&logo=github&style=flat-square)
+
 ## Introduction
 
 Easy to understand applications with rust just for having fun :relieved:
