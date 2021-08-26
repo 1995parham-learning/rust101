@@ -21,7 +21,48 @@ impl<T, P: PartialOrd> DHeap<T, P> {
         }
     }
 
+    fn highest_priority_child(&self, index: usize) -> usize {
+        let mut highest_priority_child = self.d * index + 1;
+        for i in 1..self.d {
+            let child_index = self.d * index + i + 1;
+            match self.pairs.get(child_index) {
+                Some(child) => {
+                    if child.1 > self.pairs[highest_priority_child].1 {
+                        highest_priority_child = index;
+                    }
+                }
+                None => break,
+            }
+        }
+
+        highest_priority_child
+    }
+
+    fn first_leaf_index(&self) -> usize {
+        match self.pairs.len() {
+            0 => 0,
+            1 => 0,
+            _ => (self.pairs.len() - 2) / self.d + 1,
+        }
+    }
+
+    fn push_down(&mut self, index: usize) {
+        let mut current_index = index;
+
+        while current_index < self.first_leaf_index() {
+            let child_index = self.highest_priority_child(current_index);
+
+            if self.pairs[child_index].1 > self.pairs[current_index].1 {
+                self.pairs.swap(current_index, child_index);
+                current_index = child_index;
+            } else {
+                break;
+            }
+        }
+    }
+
     // bubble_up implements a heapify to maintain the max heap property.
+    // it moves an element from the button of heap to its position.
     fn bubble_up(&mut self, index: usize) {
         let mut parent_index = index;
         while parent_index > 0 {
@@ -45,7 +86,7 @@ impl<T, P: PartialOrd> Heap<T, P> for DHeap<T, P> {
     fn peek(&mut self) -> T {
         let (element, _) = self.pairs.remove(0);
 
-        // TODO: maitain the heap property
+        self.push_down(0);
 
         element
     }
@@ -67,9 +108,11 @@ mod tests {
 
         h.insert(10, 10);
         h.insert(15, 20);
+        h.insert(5, 5);
 
         assert_eq!(*h.top(), 15);
         assert_eq!(h.peek(), 15);
         assert_eq!(h.peek(), 10);
+        assert_eq!(h.peek(), 5);
     }
 }
