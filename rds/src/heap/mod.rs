@@ -45,8 +45,7 @@ impl<T, P: PartialOrd> DHeap<T, P> {
     // first_leaf_index return the index of the first leaf node.
     fn first_leaf_index(&self) -> usize {
         match self.pairs.len() {
-            0 => 0,
-            1 => 0,
+            0 | 1 => 0,
             _ => (self.pairs.len() - 2) / self.d + 1,
         }
     }
