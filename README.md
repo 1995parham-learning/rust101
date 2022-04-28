@@ -17,8 +17,8 @@ cargo install cargo-bpf --features=llvm13
 ```
 
 ```sh
-cargo new elbpf
-cargo bpf add hello_world
+cargo bpf new elbpf
+cargo bpf add hello
 ```
 
 ## Projects
