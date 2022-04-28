@@ -6,6 +6,21 @@
 
 Easy to understand applications with rust just for having fun :relieved:
 
+## BPF
+
+To write BPF code in Rust, it's easiest to use cargo-bpf (part of the redbpf suite)
+which handles setting up the project and can even function as a development loader.
+
+```sh
+sudo pacman -Syu llvm
+cargo install cargo-bpf --features=llvm13
+```
+
+```sh
+cargo new elbpf
+cargo bpf add hello_world
+```
+
 ## Projects
 
 ### Phone Book :iphone:
