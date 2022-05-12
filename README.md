@@ -30,3 +30,8 @@ Phone book application stores users and their phones as struct. It has an uncomp
 ### Word Count 🔢
 
 This application receives a delimiter and some entries (i.e. some text files or array of strings) and after separation based on a delimiter, it will count and calculate the number of each word in the entries.
+
+## Data in Depth
+
+This example is based on _Rust in Action_ book and shows how data is stored.
+One of its example use rust overflow panic and if you build it in release mode then you don't have it.
