@@ -4,19 +4,23 @@ on:
   push:
 
 jobs:
-  check:
-    name: check
+  cargo:
+    name: cargo
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ matrix.projects }}
     strategy:
       matrix:
-        project:
+        projects:
           - phonebook
           - rds
           - word-count-parham
+          - recho
+          - data-in-depth
     steps:
       - name: checkout sources
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v3
       - name: install stable toolchain
         uses: actions-rs/toolchain@v1
         with:
@@ -24,22 +28,12 @@ jobs:
           toolchain: stable
           override: true
           components: rustfmt, clippy
-
       - name: run cargo fmt
-        run: |
-          cd ${{ matrix.project }}
-          cargo fmt --all -- --check
-
+        run: cargo fmt --all -- --check
       - name: run cargo clippy
-        run: |
-          cd ${{ matrix.project }}
-          cargo clippy -- -D warnings
-
+        run: cargo clippy -- -D warnings
       - run: |
-          cd ${{ matrix.project }}
           if [ -f docker-compose.yml ]; then
             docker-compose up -d
           fi
-      - run: |
-          cd ${{ matrix.project }}
-          cargo test
+      - run: cargo test
