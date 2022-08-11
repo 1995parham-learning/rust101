@@ -1,6 +1,7 @@
 fn main() {
     print_16bit_integers();
     print_32bit_float();
+    print_32bit_int();
     // count_to_infinity();
     split_float32();
 }
@@ -20,9 +21,18 @@ fn print_16bit_integers() {
 fn print_32bit_float() {
     let f: f32 = 1378.1373;
 
-    let fake: u32 = unsafe { std::mem::transmute(f) };
+    let fake: u32 = f.to_bits();
 
-    println!("fake: {:032b} {}", fake, fake);
+    println!(
+        "32bit float representation in bits: {:032b} {} - {}",
+        fake, fake, f
+    );
+}
+
+fn print_32bit_int() {
+    let i: u32 = 1378;
+
+    println!("32bit uint representation: {:032b} {}", i, i);
 }
 
 fn _count_to_infinity() {
