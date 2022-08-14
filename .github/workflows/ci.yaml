@@ -18,6 +18,7 @@ jobs:
           - word-count-parham
           - recho
           - data-in-depth
+          - elipu
     steps:
       - name: checkout sources
         uses: actions/checkout@v3
