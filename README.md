@@ -28,37 +28,28 @@ Rust handles dependencies by hand in `cargo.toml` file. In this file you specify
 
 ```bash
 # Create a new Cargo package
-
 carg new
 
 # Build and install a Rust binary
-
 cargo install
 
 # Compile the current package
-
 cargo build
 
 # Search packages in crates.io
-
 cargo search
 
 # Build a package's documentation
-
 cargo doc
 
 # Execute unit and integration tests of a package
-
 cargo test
 
 # Automatically fix lint warnings reported by rustc
-
 cargo fix
 
 # Execute benchmarks of a package
-
 cargo bench
-
 ```
 
 For finding about latest release of each cargo you can use [Docs.rs](https://docs.rs).
