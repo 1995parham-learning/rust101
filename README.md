@@ -1,16 +1,22 @@
-# Rust 101
-
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/1995parham/rust101/ci.yaml?label=ci&logo=github&style=flat-square&branch=main)
+<div align="center">
+  <h1>Rust 101</h1>
+  <h6>Learning Rust with the love of your life</h6>
+  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/1995parham-learning/rust101/ci.yaml?style=for-the-badge">
+</div>
 
 ## Introduction
 
-Easy to understand applications with rust just for having fun :relieved:
+Easy to understand applications with Rust just for having fun :relieved:.
 
 ## Tools
 
 ### rustc
 
+The Rust compiler
+
 ### cargo
+
+The Rust dependency/project manager
 
 ### Rustup
 
