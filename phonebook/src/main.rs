@@ -83,7 +83,7 @@ fn main() {
                 }
                 "exit" | "quit" => break,
                 _ => {
-                    println!("unkown command {}", cmd);
+                    println!("unknown command {}", cmd);
                     continue;
                 }
             },
