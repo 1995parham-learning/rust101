@@ -1,7 +1,7 @@
 <div align="center">
-  <h1>Rust 101</h1>
-  <h6>Learning Rust with the love of your life</h6>
-  <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/1995parham-learning/rust101/ci.yaml?style=for-the-badge">
+<h1>Rust 101</h1>
+<h6>Learning Rust with the love of your life</h6>
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/1995parham-learning/rust101/ci.yaml?style=for-the-badge">
 </div>
 
 ## Introduction
@@ -77,39 +77,39 @@ rust has `println!` macro which has `{}` for normal printing, `{:?}` for debug p
 ```rust
 let some_u8_value = Some(0u8);
 if let Some(3) = some_u8_value {
-println!("three");
+    println!("three");
 }
 
 let some\*u8_value = 0u8;
 match some_u8_value {
-1 => println!("one"),
-2 => println!("two"),
+    1 => println!("one"),
+      2 => println!("two"),
 
-- => (),
-  }
+      - => (),
+}
 
 # [derive(Debug)]
 
 enum UsState {
-Alabama,
-// --snip--
+    Alabama,
+    // --snip--
 }
 
 enum Coin {
-Penny,
-Nickel,
-Dime,
-Quarter(UsState)
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState)
 }
 
 match coin {
-Coin::Penny => 1,
-Coin::Nickel => 2,
-Coin::Dime => 10,
-Coin::Quarter(state) => {
-println!("State quarter from {:?}!", state);
-25
-},
+    Coin::Penny => 1,
+    Coin::Nickel => 2,
+    Coin::Dime => 10,
+    Coin::Quarter(state) => {
+        println!("State quarter from {:?}!", state);
+        25
+    },
 }
 
 ```
@@ -118,10 +118,10 @@ println!("State quarter from {:?}!", state);
 
 ```rust
 let result = loop {
-  counter += 1;
-  if counter == 10 {
-      break counter * 2;
-  }
+    counter += 1;
+    if counter == 10 {
+        break counter * 2;
+    }
 };
 ```
 
@@ -129,11 +129,11 @@ let result = loop {
 let a = [10, 20, 30, 40, 50];
 
 for element in a.iter() {
-  println!("the value is: {}", element)
+    println!("the value is: {}", element)
 }
 
 for number in (1..4).rev() {
-  println!("{}!", number)
+    println!("{}!", number)
 }
 ```
 
