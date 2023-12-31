@@ -1,9 +1,20 @@
 use std::fmt;
+use std::ops::Add;
+
+fn add<T: Add<T, Output = T>>(a: T, b: T) -> T {
+    return a + b;
+}
 
 #[derive(Debug)]
 struct Person<T: AsRef<str>> {
     name: T,
     age: u8,
+}
+
+impl<T: AsRef<str> + fmt::Display> Person<T> {
+    fn hello(&self) -> String {
+        return format!("Hello {}", self.name);
+    }
 }
 
 // T is the inner type of the Person to store the name, here
