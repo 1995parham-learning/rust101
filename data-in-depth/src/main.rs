@@ -13,7 +13,7 @@ fn print_16bit_integers() {
     println!("a: {:016b} {}", a, a);
     println!("b: {:016b} {}", b, b);
 
-    let c: u16 = unsafe { std::mem::transmute(-1378i16) };
+    let c: u16 = i16::cast_unsigned(-1378i16);
 
     println!("c: {:016b} {}", c, c);
 }
