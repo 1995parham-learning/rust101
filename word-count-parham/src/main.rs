@@ -2,18 +2,18 @@ use std::fs::File;
 use std::io::{self, Read};
 
 #[derive(Debug)]
-struct Options {
-    delimiter: String,
+struct Options<'a> {
+    delimiter: &'a str,
     debug: bool,
 }
 
 fn main() {
     let mut option = Options {
-        delimiter: " ".to_string(),
+        delimiter: " ",
         debug: false,
     };
     let args: Vec<String> = std::env::args().skip(1).collect();
-    let mut file_names: Vec<String> = Vec::new();
+    let mut file_names: Vec<&str> = Vec::new();
 
     let mut i = 0;
     while i < args.len() {
@@ -21,37 +21,37 @@ fn main() {
             match args[i].trim_start_matches("--") {
                 "delimiter" => match args.get(i + 1) {
                     Some(value) => {
-                        option.delimiter = value.clone();
+                        option.delimiter = value;
                         i += 1;
                     }
-                    None => panic!("delimiter needs a value"),
+                    None => panic!("--delimiter needs a value"),
                 },
                 "debug" => match args.get(i + 1) {
                     Some(value) => {
                         match value.to_lowercase().as_str() {
                             "true" => option.debug = true,
                             "false" => option.debug = false,
-                            _ => panic!("debug can be true or false"),
+                            _ => panic!("--debug can be true or false"),
                         }
                         i += 1;
                     }
-                    None => panic!("delimiter needs a value"),
+                    None => panic!("--debug needs a value"),
                 },
                 &_ => {
                     panic!("option {} not supported", args[i])
                 }
             }
         } else {
-            file_names.push(args[i].clone());
+            file_names.push(&args[i]);
         }
         i += 1
     }
 
-    println!("{:?}", option);
+    println!("{:#?}\nFiles: {:#?}", option, file_names);
 
     let mut count: usize = 0;
     for file_name in file_names {
-        count += count_words_from_file(&file_name, &option)
+        count += count_words_from_file(file_name, &option)
             .unwrap_or_else(|err| panic!("cannot open {} {}", file_name, err))
     }
 
@@ -64,11 +64,8 @@ fn count_words_from_file(file_name: &str, option: &Options) -> Result<usize, io:
     f.read_to_string(&mut s)?;
 
     if option.debug {
-        println!(
-            "{:?}",
-            s.split(option.delimiter.as_str()).collect::<Vec<&str>>()
-        );
+        println!("{:?}", s.split(option.delimiter).collect::<Vec<&str>>());
     }
 
-    Ok(s.split(option.delimiter.as_str()).count())
+    Ok(s.split(option.delimiter).count())
 }
