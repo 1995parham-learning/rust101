@@ -3,7 +3,7 @@ use crate::fibonacci::choose;
 mod fibonacci;
 
 fn main() {
-    let r = choose("recursive");
+    let mut r = choose("dynamic");
 
     println!("{}", r.fibonacci(10));
 }
