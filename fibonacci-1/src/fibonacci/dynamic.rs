@@ -4,9 +4,15 @@ pub struct Dynamic {
     data: Vec<i64>,
 }
 
+impl Default for Dynamic {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Dynamic {
     pub fn new() -> Self {
-        return Dynamic { data: vec![1, 1] };
+        Dynamic { data: vec![1, 1] }
     }
 }
 
