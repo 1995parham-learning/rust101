@@ -19,6 +19,7 @@ jobs:
           - recho
           - data-in-depth
           - elipu
+          - fibonacci-1
     steps:
       - name: checkout sources
         uses: actions/checkout@v5
