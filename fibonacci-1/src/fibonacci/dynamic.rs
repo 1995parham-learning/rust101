@@ -29,6 +29,9 @@ impl<'a> IntoIterator for &'a mut Dynamic {
     type IntoIter = Iter<'a, Dynamic>;
 
     fn into_iter(self) -> Self::IntoIter {
-        Self::IntoIter{n: 0, generator: self}
+        Self::IntoIter {
+            n: 0,
+            generator: self,
+        }
     }
 }

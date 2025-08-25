@@ -18,6 +18,9 @@ impl<'a> IntoIterator for &'a mut Recursive {
     type IntoIter = Iter<'a, Recursive>;
 
     fn into_iter(self) -> Self::IntoIter {
-        Self::IntoIter{n: 0, generator: self}
+        Self::IntoIter {
+            n: 0,
+            generator: self,
+        }
     }
 }
