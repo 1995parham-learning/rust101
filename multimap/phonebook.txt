@@ -1,0 +1,5 @@
+1 Hugo
+1 Hugo
+2 Hello
+2 Bye
+10 Find
