@@ -42,7 +42,7 @@ fn _count_to_infinity() {
     loop {
         i += 1000;
         print!("{}...", i);
-        if i % 10000 == 0 {
+        if i.is_multiple_of(10000) {
             println!();
         }
     }
