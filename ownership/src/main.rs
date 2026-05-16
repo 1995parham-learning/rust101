@@ -7,17 +7,18 @@ fn print(p: &Person) {
     println!("{} {}", p.name, p.age);
 }
 
+#[allow(dead_code)]
 fn older(p: &mut Person, years: i32) {
     p.age += years;
 }
 
 fn main() {
-    let p = Person{
+    let p = Person {
         name: String::from("Elahe Dastan"),
         age: 30,
     };
 
     print(&p);
-    
-    p;
+
+    drop(p);
 }

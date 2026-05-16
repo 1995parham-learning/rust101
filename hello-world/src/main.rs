@@ -1,8 +1,9 @@
 use std::fmt;
 use std::ops::Add;
 
+#[allow(dead_code)]
 fn add<T: Add<T, Output = T>>(a: T, b: T) -> T {
-    return a + b;
+    a + b
 }
 
 #[derive(Debug)]
@@ -12,8 +13,9 @@ struct Person<T: AsRef<str>> {
 }
 
 impl<T: AsRef<str> + fmt::Display> Person<T> {
+    #[allow(dead_code)]
     fn hello(&self) -> String {
-        return format!("Hello {}", self.name);
+        format!("Hello {}", self.name)
     }
 }
 
@@ -21,11 +23,11 @@ impl<T: AsRef<str> + fmt::Display> Person<T> {
 // we want it to have an implementation for display.
 impl<T: AsRef<str> + fmt::Display> fmt::Display for Person<T> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        return write!(
+        write!(
             f,
             "There is a person with name: {} and age {}",
             self.name, self.age
-        );
+        )
     }
 }
 

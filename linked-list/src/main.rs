@@ -12,12 +12,12 @@ impl List {
     }
 
     // Consume a list, and return the same list with a new element at its front.
-    fn prepend(self: Self, elem: u32) -> List {
+    fn prepend(self, elem: u32) -> List {
         List::Cons(elem, Box::new(self))
     }
 
     // Return the length of the list.
-    fn len(self: &Self) -> u32 {
+    fn len(&self) -> u32 {
         // `self` has to be matched, because the behavior of this method
         // depends on the variant of `self`.
 
@@ -40,9 +40,7 @@ impl List {
                 // allocated string instead of printing to the console.
                 format!("{}, {}", head, tail.stringify())
             }
-            List::Nil => {
-                format!("Nil")
-            }
+            List::Nil => "Nil".to_string(),
         }
     }
 }

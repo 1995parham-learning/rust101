@@ -1,6 +1,6 @@
 use csv::Error;
-use std::fs;
 use serde::Deserialize;
+use std::fs;
 
 #[derive(Deserialize)]
 struct Row {
@@ -11,27 +11,20 @@ struct Row {
 }
 
 fn main() -> Result<(), Error> {
-    let contents = fs::read_to_string("src/sample.csv")
-    .expect("Should have been able to read the file");
+    let contents =
+        fs::read_to_string("src/sample.csv").expect("Should have been able to read the file");
 
     let mut reader = csv::Reader::from_reader(contents.as_bytes());
 
-    let mut matrix: Vec<Vec<String>>;
+    let mut matrix: Vec<Vec<String>> = vec![];
 
     for record in reader.deserialize() {
         let row: Row = record?;
 
-        let mut new_row = vec![vec![
-                row.year
-            ]
-        ];
-        matrix.append(
-            &mut new_row,
-        );
+        matrix.push(vec![row.year, row.make, row.model, row.description]);
     }
 
-    println!("{:?}", matrix);
+    println!("{matrix:?}");
 
     Ok(())
 }
-
