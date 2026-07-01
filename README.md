@@ -213,6 +213,24 @@ This application receives a delimiter and some entries
 (i.e. some text files or array of strings) and after separation based on a delimiter,
 it will count and calculate the number of each word in the entries.
 
+### Tree Traversal 🌳
+
+Traverses a binary tree in pre-order, in-order, and post-order.
+The node structure stores each child as an `Option<Box<Node>>`,
+so `None` marks an empty subtree and the recursive type keeps a known size.
+
+### Longest Word 📏
+
+Given a `&str`, returns its longest whitespace-separated word,
+plus a variant that returns the longest word across two strings.
+It is a small exercise in lifetimes: the returned slice borrows from the input.
+
+### Dict Resolve 🔗
+
+Retrieves the numeric value for a key from a dictionary where a value is
+either a number or a reference to another key (e.g. deployment-stage timeouts).
+Reference chains can form cycles, so visited keys are tracked to avoid looping forever.
+
 ### Data in Depth
 
 This example is based on _Rust in Action_ book and shows how data is stored.
